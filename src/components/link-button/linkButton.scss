@@ -1,0 +1,24 @@
+button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border: 0px;
+  background: #fff;
+
+  border-radius: 2px;
+  padding: 6px 20px 6px 10px;
+
+  box-shadow: 2px 0px 6px #ccc;
+
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  outline: none;
+
+  svg {
+    margin-right: 8px;
+  }
+}

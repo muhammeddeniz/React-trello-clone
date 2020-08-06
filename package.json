@@ -11,12 +11,14 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "svgr": "svgr --ext tsx ./public/icons -d ./src/components/icons --svg-props 'fill='currentColor''"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "dependencies": {
+    "@svgr/cli": "^5.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
