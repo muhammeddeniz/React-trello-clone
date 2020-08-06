@@ -1,0 +1,35 @@
+@import "../../styles/index.scss";
+
+.btn {
+  border: 0;
+  padding: 7px 16px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.45);
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+
+  &-primary {
+    background-color: $black-1;
+    color: white;
+  }
+
+  &-secondary {
+    background-color: $pink-2;
+    color: black;
+  }
+
+  &-outline {
+    background-color: white;
+    border: 1px solid;
+    font-weight: bold;
+    padding: 5px 14px;
+
+    &:hover {
+      background-color: $black-3;
+      color: $silver-3;
+    }
+  }
+}

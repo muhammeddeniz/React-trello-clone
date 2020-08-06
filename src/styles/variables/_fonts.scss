@@ -1,0 +1,42 @@
+// @include font-face("Zona", "Zona", "zonabold", 500);
+// @include font-face("Roboto-Regular", "Roboto", "Roboto-Regular");
+// @include font-face("Roboto-Light", "Roboto", "Roboto-Light");
+// @include font-face("Roboto-Thin", "Roboto", "Roboto-Thin");
+// @include font-face("Roboto-Medium", "Roboto", "Roboto-Medium");
+
+@mixin font-face(
+  $font-name,
+  $font-folder: $font-name,
+  $font-file-name: $font-name,
+  $font-weight: 400,
+  $font-style: normal
+) {
+  @font-face {
+    font-display: swap;
+    font-family: $font-name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+
+    src: url("/static/fonts/#{$font-folder}/#{$font-file-name}.woff")
+        format("woff"),
+      url("/static/fonts/#{$font-folder}/#{$font-file-name}.woff2")
+        format("woff2"),
+      url("/static/fonts/#{$font-folder}/#{$font-file-name}.ttf")
+        format("truetype");
+  }
+}
+
+@include font-face("GoogleSans-Bold", "GoogleSans", "GoogleSans-Bold");
+@include font-face("GoogleSans-Medium", "GoogleSans", "GoogleSans-Medium");
+@include font-face("GoogleSans-Regular", "GoogleSans", "GoogleSans-Regular");
+
+$font-size-base: 1.1rem !default;
+$font-size: 1rem !default;
+
+// $font-family-sans-serif: "Roboto-Regular", -apple-system, BlinkMacSystemFont,
+//   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+//   "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+$font-family-regular: "GoogleSans-Regular" !default;
+$font-family-medium: "GoogleSans-Medium" !default;
+$font-family-bold: "GoogleSans-Bold" !default;

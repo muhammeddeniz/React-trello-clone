@@ -1,0 +1,49 @@
+{
+  "name": "React-trelo-clone",
+  "author": {
+    "name": "Muhammed DENİZ",
+    "email": "muhammeddenizcs@gmail.com",
+    "url": "https://github.com/muhammeddeniz"
+  },
+  "version": "0.1.2",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react-dom": "^16.9.0",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2016": "^6.24.1",
+    "classnames": "^2.2.6",
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "typescript": "~3.7.2"
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.3.19",
+    "@types/classnames": "^2.2.10",
+    "@types/react": "^16.9.34",
+    "eslint": "^6.8.0",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
+    "node-sass": "^4.13.1",
+    "prettier": "2.0.5",
+    "sass": "^1.26.3"
+  }
+}
