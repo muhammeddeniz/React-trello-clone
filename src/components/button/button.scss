@@ -2,7 +2,7 @@
 
 .btn {
   border: 0;
-  padding: 7px 16px;
+  padding: 6px 24px;
   border-radius: 6px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.45);
 
@@ -10,26 +10,55 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
+  text-transform: uppercase;
+
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
 
   &-primary {
-    background-color: $black-1;
-    color: white;
+    background-color: #482ff7;
+    color: #fff;
+
+    border: 0px solid;
   }
 
-  &-secondary {
-    background-color: $pink-2;
-    color: black;
+  &-success {
+    background-color: #28a745;
+    color: #fff;
+
+    border: 0px solid;
   }
 
-  &-outline {
-    background-color: white;
-    border: 1px solid;
-    font-weight: bold;
-    padding: 5px 14px;
+  &-warning {
+    background-color: #ffc107;
+    color: #111;
 
-    &:hover {
-      background-color: $black-3;
-      color: $silver-3;
-    }
+    border: 0px solid;
+  }
+  &-danger {
+    background-color: #ff304f;
+    color: #fff;
+
+    border: 0px solid;
+  }
+  &-info {
+    background-color: #007bff;
+    color: #fff;
+
+    border: 0px solid;
+  }
+
+  &-dark {
+    background-color: #111;
+    color: #fff;
+
+    border: 0px solid;
+  }
+  &-light {
+    background-color: #f8f9fa;
+    color: #111;
+
+    border: 0px solid;
   }
 }
