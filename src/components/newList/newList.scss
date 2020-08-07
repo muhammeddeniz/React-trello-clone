@@ -1,0 +1,23 @@
+.newList {
+  background: #3d5af1;
+
+  display: flex;
+  align-items: center;
+
+  padding: 10px 20px;
+  border-radius: 6px;
+  width: 260px;
+
+  cursor: pointer;
+
+  &-text {
+    margin: 0;
+    margin-left: 15px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+
+  &:hover {
+  }
+}

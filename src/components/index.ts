@@ -5,3 +5,4 @@ export { Profile } from "./profile/index";
 export { List } from "./list/index";
 export { ListHead } from "./listHead/index";
 export { ListFooter } from "./listFooter/index";
+export { NewList } from "./newList/index";
