@@ -9,7 +9,14 @@ type Props = JSX.IntrinsicElements["div"] & {
   green?: boolean;
 };
 
-const Card: React.FC<Props> = ({ red, blue, yellow, green, className }) => {
+const Card: React.FC<Props> = ({
+  red,
+  blue,
+  yellow,
+  green,
+  className,
+  children,
+}) => {
   const StyleCardColor = cx(
     "card-color",
     {
@@ -24,7 +31,7 @@ const Card: React.FC<Props> = ({ red, blue, yellow, green, className }) => {
   return (
     <div className="card">
       <div className={StyleCardColor}></div>
-      <p className="card-text">Kart 1.1</p>
+      <p className="card-text">{children}</p>
     </div>
   );
 };
