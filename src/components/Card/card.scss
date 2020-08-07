@@ -1,5 +1,5 @@
 .card {
-  background-color: #fff;
+  background-color: #ccc;
   padding: 10px 10px;
 
   border-radius: 8px;
@@ -7,5 +7,29 @@
   &-text {
     padding: 0px;
     margin: 0px;
+  }
+  &-color {
+    width: 25px;
+    height: 8px;
+
+    border-radius: 10px;
+
+    margin-bottom: 5px;
+
+    &-red {
+      background-color: red;
+    }
+
+    &-green {
+      background-color: #28a745;
+    }
+
+    &-yellow {
+      background-color: #ffc107;
+    }
+
+    &-blue {
+      background-color: #007bff;
+    }
   }
 }
