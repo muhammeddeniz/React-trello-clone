@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgHome(props) {
+function SvgHome(props: any) {
   return (
     <svg width={24} height={24} fill="currentColor" {...props}>
       <path

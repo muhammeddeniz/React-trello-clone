@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgCard(props) {
+function SvgCard(props: any) {
   return (
     <svg width={19} height={16} fill="currentColor" {...props}>
       <path

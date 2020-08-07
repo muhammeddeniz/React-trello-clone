@@ -1,5 +1,8 @@
 export { default as Card } from './Card'
+export { default as Card2 } from './Card2'
+export { default as Close } from './Close'
 export { default as Home } from './Home'
+export { default as List } from './List'
 export { default as More } from './More'
 export { default as Plus } from './Plus'
 export { default as WhitePlus } from './WhitePlus'

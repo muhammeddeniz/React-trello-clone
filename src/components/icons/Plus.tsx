@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function SvgPlus(props) {
+function SvgPlus(props: any) {
   return (
     <svg width={16} height={16} fill="currentColor" {...props}>
       <path
