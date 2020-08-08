@@ -6,3 +6,7 @@ export { List } from "./list/index";
 export { ListHead } from "./listHead/index";
 export { ListFooter } from "./listFooter/index";
 export { NewList } from "./newList/index";
+export { EditCard } from "./editCard/index";
+export { IconButton } from "./iconButton/index";
+export { Textarea } from "./textarea/index";
+export { Header } from "./header/index";

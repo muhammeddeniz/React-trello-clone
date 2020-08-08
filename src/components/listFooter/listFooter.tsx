@@ -7,10 +7,10 @@ const ListFooter: React.FC<any> = () => {
   return (
     <div className="ListFooter">
       <div className="ListFooter-left">
-        <Plus></Plus>
+        <Plus />
         <p>Add another card</p>
       </div>
-      <Card></Card>
+      <Card />
     </div>
   );
 };

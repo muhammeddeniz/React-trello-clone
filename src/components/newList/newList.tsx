@@ -7,7 +7,7 @@ import { WhitePlus } from "../icons";
 const NewList: React.FC<any> = () => {
   return (
     <div className="newList">
-      <WhitePlus color="white"></WhitePlus>
+      <WhitePlus color="white" />
       <p className="newList-text">Add another list</p>
     </div>
   );

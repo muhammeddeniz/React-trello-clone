@@ -16,7 +16,7 @@ const List: React.FC<any> = () => {
       <Card>Kart 1.2</Card>
       <Card green>Kart 1.3</Card>
       <Card green>Kart 1.4</Card>
-      <ListFooter></ListFooter>
+      <ListFooter />
     </div>
   );
 };

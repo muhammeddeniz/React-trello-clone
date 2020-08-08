@@ -1,0 +1,22 @@
+.iconButton {
+  border: 0px solid;
+  background: rgb(202, 200, 200);
+
+  height: 30px;
+  width: 30px;
+
+  margin-left: 15px;
+
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #111;
+  }
+}

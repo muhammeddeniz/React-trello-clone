@@ -7,14 +7,14 @@ export default {
 
 export const Cards = () => (
   <div>
-    <Card red></Card>
+    <Card red>Card 1.1</Card>
     <br />
-    <Card yellow></Card>
-    <br />
-
-    <Card blue></Card>
+    <Card yellow>Card 1.2</Card>
     <br />
 
-    <Card green></Card>
+    <Card blue>Card 1.3</Card>
+    <br />
+
+    <Card green>Card 1.4</Card>
   </div>
 );

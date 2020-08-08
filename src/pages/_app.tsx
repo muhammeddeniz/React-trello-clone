@@ -4,6 +4,11 @@ import Head from "next/head";
 
 import "../styles/index.scss";
 
+import Store from "../store/store";
+import { Header } from "../components";
+
+const store = new Store();
+
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
@@ -13,8 +18,8 @@ class MyApp extends App {
         <Head>
           <meta charSet="utf-8" />
         </Head>
-
-        <Component {...pageProps} />
+        <Header></Header>
+        <Component {...pageProps} store={store} />
       </>
     );
   }

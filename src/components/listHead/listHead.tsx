@@ -11,7 +11,7 @@ const ListHead: React.FC<IProps> = ({ title }) => {
   return (
     <div className="listHead">
       <p className="listHead-title">{title}</p>
-      <More></More>
+      <More />
     </div>
   );
 };

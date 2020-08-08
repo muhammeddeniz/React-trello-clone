@@ -4,3 +4,5 @@ class Store {
   @observable
   name: string = "muhammed";
 }
+
+export default Store;
