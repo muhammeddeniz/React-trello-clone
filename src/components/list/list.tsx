@@ -1,21 +1,18 @@
-import React from "react";
+import React, { Children } from "react";
 
 import "./list.scss";
 import { ListHead, ListFooter, Card } from "../index";
 
-interface IProps {
+type IProps = JSX.IntrinsicElements["div"] & {
   ListName?: string;
   cards?: Array<any>;
-}
+};
 
-const List: React.FC<IProps> = ({ ListName }) => {
+const List: React.FC<IProps> = ({ ListName, children }) => {
   return (
     <div className="list">
       <ListHead>{ListName}</ListHead>
-      <Card>Kart 1.1</Card>
-      <Card>Kart 1.2</Card>
-      <Card green>Kart 1.3</Card>
-      <Card green>Kart 1.4</Card>
+      {Children}
       <ListFooter />
     </div>
   );
