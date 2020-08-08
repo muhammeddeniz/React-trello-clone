@@ -7,10 +7,10 @@ interface IProps {
   title?: string;
 }
 
-const ListHead: React.FC<IProps> = ({ title }) => {
+const ListHead: React.FC<IProps> = ({ children }) => {
   return (
     <div className="listHead">
-      <p className="listHead-title">{title}</p>
+      <p className="listHead-title">{children}</p>
       <More />
     </div>
   );

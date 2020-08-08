@@ -1,11 +1,13 @@
 import React from "react";
 
-import { Button } from "../components";
+import { List } from "../components";
 
 const HomePage: React.FC<any> = () => {
   return (
-    <div>
-      <p>Hello</p>
+    <div className="homePage">
+      <List ListName="Birinci Liste"></List>
+      <List ListName="İkinci Liste"></List>
+      <List ListName="Üçüncü Liste"></List>
     </div>
   );
 };

@@ -8,10 +8,10 @@ interface IProps {
   cards?: Array<any>;
 }
 
-const List: React.FC<any> = () => {
+const List: React.FC<IProps> = ({ ListName }) => {
   return (
     <div className="list">
-      <ListHead title="Birinci Liste"></ListHead>
+      <ListHead>{ListName}</ListHead>
       <Card>Kart 1.1</Card>
       <Card>Kart 1.2</Card>
       <Card green>Kart 1.3</Card>
