@@ -150,7 +150,17 @@ class App extends Component {
                   </div>
                 ))}
                 {provided.placeholder}
-                <ListFooter></ListFooter>
+                <ListFooter
+                  onClick={() => {
+                    data1.push({
+                      id: "22",
+                      content: "Kart 1.",
+                    });
+
+                    this.setState({ items: data1 });
+                    console.log(data2);
+                  }}
+                ></ListFooter>
               </div>
             )}
           </Droppable>
@@ -159,6 +169,7 @@ class App extends Component {
               <div
                 ref={provided.innerRef}
                 style={{
+                  userSelect: "none",
                   width: 300,
                   paddingLeft: 10,
                   paddingRight: 10,
@@ -183,7 +194,17 @@ class App extends Component {
                   </Draggable>
                 ))}
                 {provided.placeholder}
-                <ListFooter></ListFooter>
+                <ListFooter
+                  onClick={() => {
+                    data2.push({
+                      id: "12",
+                      content: "Kart 1.",
+                    });
+
+                    this.setState({ selected: data2 });
+                    console.log(data2);
+                  }}
+                ></ListFooter>
               </div>
             )}
           </Droppable>
