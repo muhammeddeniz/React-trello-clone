@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Card, List, ListHead, ListFooter } from "../components";
+import { Card, List, ListHead, ListFooter, EditCard } from "../components";
 
 const data1 = [
   {
@@ -61,30 +61,33 @@ const move = (
 
 const grid = 8;
 
-class App extends Component {
-  state = {
-    items: data1,
-    selected: data2,
-  };
+const App: React.FC<any> = () => {
+  const [items, setItems] = useState(data1);
+  const [selected, setSelected] = useState(data2);
 
-  id2List = {
+  const id2List = {
     droppable: "items",
     droppable2: "selected",
   };
 
-  getList: any = (id: never) => this.state[this.id2List[id]];
+  const getList: any = (id: never) => {
+    if (id2List[id] == "items") {
+      return items;
+    } else {
+      return selected;
+    }
+  };
 
-  onDragEnd = (result: any) => {
+  const onDragEnd = (result: any) => {
     const { source, destination } = result;
 
-    // dropped outside the list
     if (!destination) {
       return;
     }
 
     if (source.droppableId === destination.droppableId) {
       const items = reorder(
-        this.getList(source.droppableId),
+        getList(source.droppableId),
         source.index,
         destination.index
       );
@@ -92,95 +95,41 @@ class App extends Component {
       let state: any = { items };
 
       if (source.droppableId === "droppable2") {
-        state = { selected: items };
+        setSelected(state);
       }
-
-      this.setState(state);
     } else {
       const result = move(
-        this.getList(source.droppableId),
-        this.getList(destination.droppableId),
+        getList(source.droppableId),
+        getList(destination.droppableId),
         source,
         destination
       );
 
-      this.setState({
-        items: result.droppable,
-        selected: result.droppable2,
-      });
+      setItems(result.droppable);
+      setSelected(result.droppable2);
     }
   };
 
-  render() {
-    return (
-      <div style={{ display: "flex" }}>
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  width: 300,
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5,
-                  borderRadius: 12,
-                  background: "#dee1ec",
-                }}
-              >
-                <ListHead>Birinci Liste</ListHead>
-                {this.state.items.map((item, index) => (
-                  <div>
-                    <Draggable
-                      key={item.id}
-                      draggableId={item.id}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <Card green> {item.content}</Card>
-                        </div>
-                      )}
-                    </Draggable>
-                  </div>
-                ))}
-                {provided.placeholder}
-                <ListFooter
-                  onClick={() => {
-                    data1.push({
-                      id: "22",
-                      content: "Kart 1.",
-                    });
-
-                    this.setState({ items: data1 });
-                    console.log(data2);
-                  }}
-                ></ListFooter>
-              </div>
-            )}
-          </Droppable>
-          <Droppable droppableId="droppable2">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  userSelect: "none",
-                  width: 300,
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5,
-                  borderRadius: 12,
-                  background: "#dee1ec",
-                }}
-              >
-                <ListHead>İkinci Liste</ListHead>
-                {this.state.selected.map((item, index) => (
+  return (
+    <div style={{ display: "flex" }}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="droppable">
+          {(provided, snapshot) => (
+            <div
+              ref={provided.innerRef}
+              style={{
+                width: 300,
+                paddingLeft: 10,
+                paddingRight: 10,
+                paddingTop: 5,
+                paddingBottom: 5,
+                borderRadius: 12,
+                background: "#dee1ec",
+              }}
+            >
+              <ListHead>Birinci Liste</ListHead>
+              {items.map((item, index) => (
+                <div>
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided, snapshot) => (
                       <div
@@ -188,30 +137,54 @@ class App extends Component {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Card red> {item.content}</Card>
+                        <Card green> {item.content}</Card>
                       </div>
                     )}
                   </Draggable>
-                ))}
-                {provided.placeholder}
-                <ListFooter
-                  onClick={() => {
-                    data2.push({
-                      id: "12",
-                      content: "Kart 1.",
-                    });
-
-                    this.setState({ selected: data2 });
-                    console.log(data2);
-                  }}
-                ></ListFooter>
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-    );
-  }
-}
+                </div>
+              ))}
+              {provided.placeholder}
+              <ListFooter></ListFooter>
+            </div>
+          )}
+        </Droppable>
+        <Droppable droppableId="droppable2">
+          {(provided, snapshot) => (
+            <div
+              ref={provided.innerRef}
+              style={{
+                userSelect: "none",
+                width: 300,
+                paddingLeft: 10,
+                paddingRight: 10,
+                paddingTop: 5,
+                paddingBottom: 5,
+                borderRadius: 12,
+                background: "#dee1ec",
+              }}
+            >
+              <ListHead>İkinci Liste</ListHead>
+              {selected.map((item, index) => (
+                <Draggable key={item.id} draggableId={item.id} index={index}>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Card red> {item.content}</Card>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+              <ListFooter></ListFooter>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
+  );
+};
 
 export default App;

@@ -6,13 +6,14 @@ import { Card2, Close, List } from "../icons";
 import { Button, IconButton, Textarea } from "../index";
 import { Profile } from "../profile";
 
-interface IProps {
+type IProps = JSX.IntrinsicElements["div"] & {
   store?: any;
-}
+  setAcildiMi?: any;
+};
 
-const editCard: React.FC<IProps> = ({ store }) => {
+const editCard: React.FC<IProps> = ({ store, setAcildiMi, ...props }) => {
   return (
-    <div className="editCard">
+    <div className="editCard" {...props}>
       <div className="editCard-header">
         <div className="editCard-header-leftSide">
           <Card2 />
@@ -29,7 +30,13 @@ const editCard: React.FC<IProps> = ({ store }) => {
             </div>
           </div>
         </div>
-        <Close />
+        <div
+          onClick={() => {
+            setAcildiMi({ acildiMi: false });
+          }}
+        >
+          <Close />
+        </div>
       </div>
 
       <div className="editCard-body">
