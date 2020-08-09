@@ -1,4 +1,4 @@
-.editCard {
+.NewCard {
   .close {
     cursor: pointer;
   }
@@ -19,6 +19,19 @@
 
       &-text {
         margin-left: 20px;
+
+        &-input {
+          font-weight: bold;
+          font-size: 17px;
+
+          border: 0 solid;
+          color: #111;
+          border-radius: 4px;
+
+          outline: none;
+
+          padding: 2px 4px;
+        }
 
         &-title {
           font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",

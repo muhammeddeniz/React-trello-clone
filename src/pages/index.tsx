@@ -1,7 +1,14 @@
 import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Card, List, ListHead, ListFooter, EditCard } from "../components";
+import {
+  Card,
+  List,
+  ListHead,
+  ListFooter,
+  EditCard,
+  NewCard,
+} from "../components";
 
 const data1 = [
   {
@@ -58,12 +65,21 @@ const move = (
 
   return result;
 };
+const defaultID = 10;
 
-const grid = 8;
+////////////////////            APP            /////////////////////////
 
-const App: React.FC<any> = () => {
+interface IProps {
+  store?: any;
+}
+
+const App: React.FC<IProps> = ({ store }) => {
   const [items, setItems] = useState(data1);
   const [selected, setSelected] = useState(data2);
+  const [acildiMi, setAcildiMi] = useState(true);
+  const [listeAdi, setListeAdi] = useState("");
+  const [CardTitle, setCardTitle] = useState("");
+  const [Comment, setComment] = useState("");
 
   const id2List = {
     droppable: "items",
@@ -144,7 +160,12 @@ const App: React.FC<any> = () => {
                 </div>
               ))}
               {provided.placeholder}
-              <ListFooter></ListFooter>
+              <ListFooter
+                onClick={() => {
+                  setAcildiMi(true);
+                  setListeAdi("birinci liste");
+                }}
+              ></ListFooter>
             </div>
           )}
         </Droppable>
@@ -178,10 +199,30 @@ const App: React.FC<any> = () => {
                 </Draggable>
               ))}
               {provided.placeholder}
-              <ListFooter></ListFooter>
+              <ListFooter
+                onClick={() => {
+                  let data = {
+                    id: defaultID,
+                    content: CardTitle,
+                  };
+
+                  console.log(data);
+
+                  setAcildiMi(true);
+                  setListeAdi("ikinci liste");
+                }}
+              ></ListFooter>
             </div>
           )}
         </Droppable>
+        {store.name}
+        {acildiMi && (
+          <NewCard
+            setAcildiMi={setAcildiMi}
+            listeAdi={listeAdi}
+            setCardAdi={setCardTitle}
+          ></NewCard>
+        )}
       </DragDropContext>
     </div>
   );

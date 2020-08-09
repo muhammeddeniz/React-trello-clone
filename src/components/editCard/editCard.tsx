@@ -31,8 +31,9 @@ const editCard: React.FC<IProps> = ({ store, setAcildiMi, ...props }) => {
           </div>
         </div>
         <div
+          className="close"
           onClick={() => {
-            setAcildiMi({ acildiMi: false });
+            setAcildiMi(false);
           }}
         >
           <Close />

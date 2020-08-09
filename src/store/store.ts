@@ -2,7 +2,7 @@ import { observable } from "mobx";
 
 class Store {
   @observable
-  acildiMi: boolean = false;
+  name: string = "muhammed";
 }
 
 export default Store;
