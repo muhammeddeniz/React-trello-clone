@@ -2,7 +2,7 @@ import { observable, action, toJS } from "mobx";
 
 class Store {
   @observable
-  name = "Muhammed";
+  name = "Deniz";
 
   @observable
   cards1 = [

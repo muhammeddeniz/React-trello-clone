@@ -4,7 +4,11 @@ import "./header.scss";
 
 import { LinkButton, Profile } from "../index";
 
-const Header = () => {
+interface IProps {
+  name?: string;
+}
+
+const Header: React.FC<IProps> = ({ name }) => {
   return (
     <div className="header">
       <div className="header-links">
@@ -13,7 +17,7 @@ const Header = () => {
 
       <div className="header-avatar">
         <Link href="index">
-          <Profile white></Profile>
+          <Profile name={name} white></Profile>
         </Link>
       </div>
     </div>

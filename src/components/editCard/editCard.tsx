@@ -97,7 +97,7 @@ const editCard: React.FC<IProps> = ({
                   <Profile />
                   <div className="editCard-body-comment-header-t">
                     <p className="editCard-body-comment-header-t-title">
-                      Muhammed Deniz
+                      {store.name}
                     </p>
                     <p className="editCard-body-comment-header-t-text">
                       a minute ago
