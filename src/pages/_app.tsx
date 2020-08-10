@@ -19,7 +19,7 @@ class MyApp extends App {
         <Head>
           <meta charSet="utf-8" />
         </Head>
-        <Header name={store.name}></Header>
+        <Header name={store.name} store={store}></Header>
         <Component {...pageProps} />
       </Provider>
     );

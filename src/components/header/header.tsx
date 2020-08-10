@@ -6,19 +6,20 @@ import { LinkButton, Profile } from "../index";
 
 interface IProps {
   name?: string;
+  store?: any;
 }
 
-const Header: React.FC<IProps> = ({ name }) => {
+const Header: React.FC<IProps> = ({ store, name }) => {
   return (
     <div className="header">
       <div className="header-links">
-        <LinkButton>TEST BOARD</LinkButton>
+        <Link href="index">
+          <LinkButton>TEST BOARD</LinkButton>
+        </Link>
       </div>
 
       <div className="header-avatar">
-        <Link href="index">
-          <Profile name={name} white></Profile>
-        </Link>
+        <Profile name={name} white store={store} admin></Profile>
       </div>
     </div>
   );

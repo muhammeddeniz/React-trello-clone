@@ -11,3 +11,4 @@ export { IconButton } from "./iconButton/index";
 export { Textarea } from "./textarea/index";
 export { Header } from "./header/index";
 export { NewCard } from "./newCard/index";
+export { ProfileCard } from "./profileCard/index";

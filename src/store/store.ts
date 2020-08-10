@@ -150,6 +150,11 @@ class Store {
       this.cards2[indexMaster].comment.push(comment);
     }
   };
+
+  @action
+  ChangeName = (e: string) => {
+    this.name = e;
+  };
 }
 
 export default Store;
