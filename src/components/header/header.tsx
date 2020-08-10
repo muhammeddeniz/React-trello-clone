@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import "./header.scss";
 
 import { LinkButton, Profile } from "../index";
@@ -11,7 +12,9 @@ const Header = () => {
       </div>
 
       <div className="header-avatar">
-        <Profile white></Profile>
+        <Link href="index">
+          <Profile white></Profile>
+        </Link>
       </div>
     </div>
   );

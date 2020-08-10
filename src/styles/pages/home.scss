@@ -1,8 +1,7 @@
-.homePage {
+.home-elements {
   padding: 20px;
-  display: flex;
 
-  * {
-    margin-left: 20px;
+  &-element {
+    margin: 20px;
   }
 }

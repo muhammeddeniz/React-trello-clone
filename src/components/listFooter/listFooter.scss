@@ -1,16 +1,16 @@
 .ListFooter {
   display: flex;
-
   user-select: none;
 
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 10px;
+  padding: 0px 20px;
 
-  margin-left: -24px;
+  margin-left: 0px;
   margin-right: 10px;
   cursor: pointer;
+
   p {
     margin-left: 10px;
     color: #5c5757;

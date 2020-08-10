@@ -96,6 +96,13 @@ class Store {
       }
     }
   };
+
+  @action
+  GetComment = (title: string) => {
+    let findData = this.cards1.find((item) => item.content == title);
+
+    return findData?.comment;
+  };
 }
 
 export default Store;

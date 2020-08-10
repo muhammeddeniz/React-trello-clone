@@ -119,29 +119,88 @@ const App: React.FC<any> = inject("store")(
         store={props.store}
         setEditAcildimi={setEditCardAcildiMi}
         title={editTitle}
-        commnet={editCommnet}
+        comment={editCommnet}
         inlist={listeAdi}
       ></EditCard>
     ) : (
-      <div style={{ display: "flex" }}>
+      <div className="home-elements" style={{ display: "flex" }}>
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  width: 300,
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5,
-                  borderRadius: 12,
-                  background: "#dee1ec",
-                }}
-              >
-                <ListHead>Birinci Liste</ListHead>
-                {items.map((item: any, index: any) => (
-                  <div>
+          <div>
+            <Droppable droppableId="droppable">
+              {(provided, snapshot) => (
+                <div
+                  className="home-elements-element"
+                  ref={provided.innerRef}
+                  style={{
+                    width: 300,
+                    paddingLeft: 10,
+                    paddingRight: 10,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    borderRadius: 12,
+                    background: "#dee1ec",
+                  }}
+                >
+                  <ListHead>Birinci Liste</ListHead>
+                  {items.map((item: any, index: any) => (
+                    <div>
+                      <Draggable
+                        key={item.id}
+                        draggableId={item.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <Card
+                              onClick={() => {
+                                setEditTitle(item.content);
+                                setEditComment(item.comment);
+                                setListeAdi("birinci liste");
+                                setEditCardAcildiMi(true);
+                              }}
+                              green
+                            >
+                              {item.content}
+                            </Card>
+                          </div>
+                        )}
+                      </Draggable>
+                    </div>
+                  ))}
+                  {provided.placeholder}
+                  <ListFooter
+                    onClick={() => {
+                      setNewCardAcildiMi(true);
+                      setListeAdi("birinci liste");
+                    }}
+                  ></ListFooter>
+                </div>
+              )}
+            </Droppable>
+          </div>
+          <div>
+            <Droppable droppableId="droppable2">
+              {(provided, snapshot) => (
+                <div
+                  className="home-elements-element"
+                  ref={provided.innerRef}
+                  style={{
+                    userSelect: "none",
+                    width: 300,
+                    paddingLeft: 10,
+                    paddingRight: 10,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    borderRadius: 12,
+                    background: "#dee1ec",
+                  }}
+                >
+                  <ListHead>İkinci Liste</ListHead>
+                  {selected.map((item: any, index: any) => (
                     <Draggable
                       key={item.id}
                       draggableId={item.id}
@@ -157,7 +216,7 @@ const App: React.FC<any> = inject("store")(
                             onClick={() => {
                               setEditTitle(item.content);
                               setEditComment(item.comment);
-                              setListeAdi("birinci liste");
+                              setListeAdi("ikinci liste");
                               setEditCardAcildiMi(true);
                             }}
                             green
@@ -167,67 +226,18 @@ const App: React.FC<any> = inject("store")(
                         </div>
                       )}
                     </Draggable>
-                  </div>
-                ))}
-                {provided.placeholder}
-                <ListFooter
-                  onClick={() => {
-                    setNewCardAcildiMi(true);
-                    setListeAdi("birinci liste");
-                  }}
-                ></ListFooter>
-              </div>
-            )}
-          </Droppable>
-          <Droppable droppableId="droppable2">
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                style={{
-                  userSelect: "none",
-                  width: 300,
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5,
-                  borderRadius: 12,
-                  background: "#dee1ec",
-                }}
-              >
-                <ListHead>İkinci Liste</ListHead>
-                {selected.map((item: any, index: any) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <Card
-                          onClick={() => {
-                            setEditTitle(item.content);
-                            setEditComment(item.comment);
-                            setListeAdi("ikinci liste");
-                            setEditCardAcildiMi(true);
-                          }}
-                          green
-                        >
-                          {item.content}
-                        </Card>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-                <ListFooter
-                  onClick={() => {
-                    setNewCardAcildiMi(true);
-                    setListeAdi("ikinci liste");
-                  }}
-                ></ListFooter>
-              </div>
-            )}
-          </Droppable>
+                  ))}
+                  {provided.placeholder}
+                  <ListFooter
+                    onClick={() => {
+                      setNewCardAcildiMi(true);
+                      setListeAdi("ikinci liste");
+                    }}
+                  ></ListFooter>
+                </div>
+              )}
+            </Droppable>
+          </div>
         </DragDropContext>
       </div>
     );

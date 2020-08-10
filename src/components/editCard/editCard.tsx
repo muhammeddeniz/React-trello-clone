@@ -10,7 +10,7 @@ type IProps = JSX.IntrinsicElements["div"] & {
   store?: any;
   title?: string;
   inList?: string;
-  commnet?: Array<string>;
+  comment?: Array<string>;
   setEditAcildimi?: any;
 };
 
@@ -18,11 +18,12 @@ const editCard: React.FC<IProps> = ({
   store,
   title,
   inlist,
-  commnet,
+  comment,
   setEditAcildimi,
   ...props
 }) => {
   const [data, setData] = useState();
+  const [thisComment, setThisComment] = useState(comment);
 
   useEffect(() => {
     if (inlist == "birinci liste") {
@@ -76,7 +77,7 @@ const editCard: React.FC<IProps> = ({
             </div>
           </div>
 
-          {commnet?.map((item, key) => {
+          {thisComment?.map((item, key) => {
             return (
               <div className="editCard-body-comment">
                 <div className="editCard-body-comment-header">
@@ -99,6 +100,7 @@ const editCard: React.FC<IProps> = ({
                     <p
                       onClick={() => {
                         store.DeleteComment(title, inlist, item);
+                        setThisComment(store.GetComment(title));
                         console.log(title);
                         console.log(inlist);
                         console.log(item);
