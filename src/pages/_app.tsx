@@ -7,6 +7,7 @@ import "../styles/index.scss";
 import Store from "../store/store";
 import { Header } from "../components";
 
+import { Provider } from "mobx-react";
 const store = new Store();
 
 class MyApp extends App {
@@ -14,13 +15,13 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <>
+      <Provider store={store}>
         <Head>
           <meta charSet="utf-8" />
         </Head>
         <Header></Header>
-        <Component {...pageProps} store={store} />
-      </>
+        <Component {...pageProps} />
+      </Provider>
     );
   }
 }

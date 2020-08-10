@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import {
@@ -9,6 +9,7 @@ import {
   EditCard,
   NewCard,
 } from "../components";
+import { observer, inject } from "mobx-react";
 
 const data1 = [
   {
@@ -69,83 +70,134 @@ const defaultID = 10;
 
 ////////////////////            APP            /////////////////////////
 
-interface IProps {
-  store?: any;
-}
+const App: React.FC<any> = inject("store")(
+  observer((props) => {
+    const [items, setItems] = useState(props.store.cards1);
+    const [selected, setSelected] = useState(props.store.cards2);
+    const [acildiMi, setAcildiMi] = useState(true);
+    const [listeAdi, setListeAdi] = useState("");
+    const [CardTitle, setCardTitle] = useState("");
+    const [Comment, setComment] = useState("");
 
-const App: React.FC<IProps> = ({ store }) => {
-  const [items, setItems] = useState(data1);
-  const [selected, setSelected] = useState(data2);
-  const [acildiMi, setAcildiMi] = useState(true);
-  const [listeAdi, setListeAdi] = useState("");
-  const [CardTitle, setCardTitle] = useState("");
-  const [Comment, setComment] = useState("");
+    useEffect(() => {
+      console.log(props.store.cards2);
+    }, []);
 
-  const id2List = {
-    droppable: "items",
-    droppable2: "selected",
-  };
+    const id2List = {
+      droppable: "items",
+      droppable2: "selected",
+    };
 
-  const getList: any = (id: never) => {
-    if (id2List[id] == "items") {
-      return items;
-    } else {
-      return selected;
-    }
-  };
-
-  const onDragEnd = (result: any) => {
-    const { source, destination } = result;
-
-    if (!destination) {
-      return;
-    }
-
-    if (source.droppableId === destination.droppableId) {
-      const items = reorder(
-        getList(source.droppableId),
-        source.index,
-        destination.index
-      );
-
-      let state: any = { items };
-
-      if (source.droppableId === "droppable2") {
-        setSelected(state);
+    const getList: any = (id: never) => {
+      if (id2List[id] == "items") {
+        return items;
+      } else {
+        return selected;
       }
-    } else {
-      const result = move(
-        getList(source.droppableId),
-        getList(destination.droppableId),
-        source,
-        destination
-      );
+    };
 
-      setItems(result.droppable);
-      setSelected(result.droppable2);
-    }
-  };
+    const onDragEnd = (result: any) => {
+      const { source, destination } = result;
 
-  return (
-    <div style={{ display: "flex" }}>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              style={{
-                width: 300,
-                paddingLeft: 10,
-                paddingRight: 10,
-                paddingTop: 5,
-                paddingBottom: 5,
-                borderRadius: 12,
-                background: "#dee1ec",
-              }}
-            >
-              <ListHead>Birinci Liste</ListHead>
-              {items.map((item, index) => (
-                <div>
+      if (!destination) {
+        return;
+      }
+
+      if (source.droppableId === destination.droppableId) {
+        const items = reorder(
+          getList(source.droppableId),
+          source.index,
+          destination.index
+        );
+
+        let state: any = { items };
+
+        if (source.droppableId === "droppable2") {
+          setSelected(state);
+        }
+      } else {
+        const result = move(
+          getList(source.droppableId),
+          getList(destination.droppableId),
+          source,
+          destination
+        );
+
+        setItems(result.droppable);
+        setSelected(result.droppable2);
+      }
+    };
+
+    return acildiMi ? (
+      <NewCard
+        setAcildiMi={setAcildiMi}
+        listeAdi={listeAdi}
+        setCardAdi={setCardTitle}
+      ></NewCard>
+    ) : (
+      <div style={{ display: "flex" }}>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                style={{
+                  width: 300,
+                  paddingLeft: 10,
+                  paddingRight: 10,
+                  paddingTop: 5,
+                  paddingBottom: 5,
+                  borderRadius: 12,
+                  background: "#dee1ec",
+                }}
+              >
+                <ListHead>Birinci Liste</ListHead>
+                {items.map((item: any, index: any) => (
+                  <div>
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <Card green> {item.content}</Card>
+                        </div>
+                      )}
+                    </Draggable>
+                  </div>
+                ))}
+                {provided.placeholder}
+                <ListFooter
+                  onClick={() => {
+                    setAcildiMi(true);
+                    setListeAdi("birinci liste");
+                  }}
+                ></ListFooter>
+              </div>
+            )}
+          </Droppable>
+          <Droppable droppableId="droppable2">
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                style={{
+                  userSelect: "none",
+                  width: 300,
+                  paddingLeft: 10,
+                  paddingRight: 10,
+                  paddingTop: 5,
+                  paddingBottom: 5,
+                  borderRadius: 12,
+                  background: "#dee1ec",
+                }}
+              >
+                <ListHead>İkinci Liste</ListHead>
+                {selected.map((item: any, index: any) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provided, snapshot) => (
                       <div
@@ -153,79 +205,30 @@ const App: React.FC<IProps> = ({ store }) => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Card green> {item.content}</Card>
+                        <Card red> {item.content}</Card>
                       </div>
                     )}
                   </Draggable>
-                </div>
-              ))}
-              {provided.placeholder}
-              <ListFooter
-                onClick={() => {
-                  setAcildiMi(true);
-                  setListeAdi("birinci liste");
-                }}
-              ></ListFooter>
-            </div>
-          )}
-        </Droppable>
-        <Droppable droppableId="droppable2">
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              style={{
-                userSelect: "none",
-                width: 300,
-                paddingLeft: 10,
-                paddingRight: 10,
-                paddingTop: 5,
-                paddingBottom: 5,
-                borderRadius: 12,
-                background: "#dee1ec",
-              }}
-            >
-              <ListHead>İkinci Liste</ListHead>
-              {selected.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <Card red> {item.content}</Card>
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-              <ListFooter
-                onClick={() => {
-                  let data = {
-                    id: defaultID,
-                    content: CardTitle,
-                  };
+                ))}
+                {provided.placeholder}
+                <ListFooter
+                  onClick={() => {
+                    let data = {
+                      id: defaultID,
+                      content: CardTitle,
+                    };
 
-                  console.log(data);
-
-                  setAcildiMi(true);
-                  setListeAdi("ikinci liste");
-                }}
-              ></ListFooter>
-            </div>
-          )}
-        </Droppable>
-        {store.name}
-        {acildiMi && (
-          <NewCard
-            setAcildiMi={setAcildiMi}
-            listeAdi={listeAdi}
-            setCardAdi={setCardTitle}
-          ></NewCard>
-        )}
-      </DragDropContext>
-    </div>
-  );
-};
+                    setAcildiMi(true);
+                    setListeAdi("ikinci liste");
+                  }}
+                ></ListFooter>
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
+    );
+  })
+);
 
 export default App;
