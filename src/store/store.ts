@@ -86,13 +86,22 @@ class Store {
   @action
   DeleteComment = (title: string, listAdi: any, text: string) => {
     if (listAdi == "birinci liste") {
-      let findData = this.cards1.find((item) => item.content == title);
+      let findData: any = this.cards1.find((item) => item.content == title);
 
+      let indexMaster: any = this.cards1.indexOf(findData);
       let index: any = findData?.comment.indexOf(text);
-      console.log(index);
 
       if (index > -1) {
-        this.cards1[index].comment.splice(index, 1);
+        this.cards1[indexMaster].comment.splice(index, 1);
+      }
+    } else if (listAdi == "ikinci liste") {
+      let findData: any = this.cards2.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards2.indexOf(findData);
+      let index: any = findData?.comment.indexOf(text);
+
+      if (index > -1) {
+        this.cards2[indexMaster].comment.splice(index, 1);
       }
     }
   };

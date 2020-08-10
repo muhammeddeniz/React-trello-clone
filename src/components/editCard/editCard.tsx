@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import { Card2, Close, List } from "../icons";
 import { Button, IconButton, Textarea } from "../index";
 import { Profile } from "../profile";
+import { strict } from "assert";
 
 type IProps = JSX.IntrinsicElements["div"] & {
   store?: any;
@@ -23,7 +24,6 @@ const editCard: React.FC<IProps> = ({
   ...props
 }) => {
   const [data, setData] = useState();
-  const [thisComment, setThisComment] = useState(comment);
 
   useEffect(() => {
     if (inlist == "birinci liste") {
@@ -31,7 +31,7 @@ const editCard: React.FC<IProps> = ({
     } else if (inlist == "ikinci liste") {
       setData(store.cards2);
     }
-  });
+  }, []);
 
   return (
     <div className="newScreen">
@@ -77,7 +77,7 @@ const editCard: React.FC<IProps> = ({
             </div>
           </div>
 
-          {thisComment?.map((item, key) => {
+          {comment?.map((item: any, key: any) => {
             return (
               <div className="editCard-body-comment">
                 <div className="editCard-body-comment-header">
@@ -100,10 +100,6 @@ const editCard: React.FC<IProps> = ({
                     <p
                       onClick={() => {
                         store.DeleteComment(title, inlist, item);
-                        setThisComment(store.GetComment(title));
-                        console.log(title);
-                        console.log(inlist);
-                        console.log(item);
                       }}
                     >
                       Delete
@@ -119,4 +115,4 @@ const editCard: React.FC<IProps> = ({
   );
 };
 
-export default editCard;
+export default observer(editCard);
