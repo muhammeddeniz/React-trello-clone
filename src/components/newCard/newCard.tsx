@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./newCard.scss";
 import { observer } from "mobx-react";
 
@@ -8,6 +8,7 @@ import { Profile } from "../profile";
 
 type IProps = JSX.IntrinsicElements["div"] & {
   store?: any;
+  id?: string;
   setAcildiMi?: any;
   listeAdi?: string;
   setCardAdi?: any;
@@ -15,11 +16,15 @@ type IProps = JSX.IntrinsicElements["div"] & {
 
 const NewCard: React.FC<IProps> = ({
   store,
+  id,
   setCardAdi,
   listeAdi,
   setAcildiMi,
   ...props
 }) => {
+  const [title, setTitle] = useState("");
+  const [comment, setComment] = useState([]);
+
   return (
     <div className="editScreen">
       <div className="NewCard" {...props}>
@@ -29,6 +34,8 @@ const NewCard: React.FC<IProps> = ({
             <div className="NewCard-header-leftSide-text">
               <input
                 type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="NewCard-header-leftSide-text-input"
               />
               <p className="NewCard-header-leftSide-text-text">
@@ -63,7 +70,20 @@ const NewCard: React.FC<IProps> = ({
             </div>
             <div className="NewCard-body-inputSide-input">
               <Textarea />
-              <Button success>SAVE</Button>
+              <Button
+                success
+                onClick={() => {
+                  if (listeAdi == "birinci liste") {
+                    store.addData1(id, title, comment);
+                  } else if (listeAdi == "ikinci liste") {
+                    store.addData2(id, title, comment);
+                  }
+
+                  setAcildiMi(false);
+                }}
+              >
+                SAVE
+              </Button>
             </div>
           </div>
         </div>

@@ -11,35 +11,6 @@ import {
 } from "../components";
 import { observer, inject } from "mobx-react";
 
-const data1 = [
-  {
-    id: "1",
-    content: "Kart 1.1",
-  },
-  {
-    id: "2",
-    content: "Kart 1.2",
-  },
-  {
-    id: "3",
-    content: "Kart 1.3",
-  },
-];
-const data2 = [
-  {
-    id: "4",
-    content: "Kart 1.1",
-  },
-  {
-    id: "5",
-    content: "Kart 1.2",
-  },
-  {
-    id: "6",
-    content: "Kart 1.3",
-  },
-];
-
 const reorder = (list: any, startIndex: any, endIndex: any) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -130,6 +101,8 @@ const App: React.FC<any> = inject("store")(
 
     return acildiMi ? (
       <NewCard
+        store={props.store}
+        id="32"
         setAcildiMi={setAcildiMi}
         listeAdi={listeAdi}
         setCardAdi={setCardTitle}
