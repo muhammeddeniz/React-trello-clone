@@ -37,7 +37,6 @@ const move = (
 
   return result;
 };
-const defaultID = 10;
 
 ////////////////////            APP            /////////////////////////
 
@@ -45,10 +44,17 @@ const App: React.FC<any> = inject("store")(
   observer((props) => {
     const [items, setItems] = useState(props.store.cards1);
     const [selected, setSelected] = useState(props.store.cards2);
-    const [acildiMi, setAcildiMi] = useState(true);
+
+    const [newCardAcildiMi, setNewCardAcildiMi] = useState(false);
+    const [editCardAcildiMi, setEditCardAcildiMi] = useState(false);
+
+    const [defaultID, setDefaultID] = useState(10);
     const [listeAdi, setListeAdi] = useState("");
     const [CardTitle, setCardTitle] = useState("");
     const [Comment, setComment] = useState("");
+
+    const [editTitle, setEditTitle] = useState("");
+    const [editCommnet, setEditComment] = useState([]);
 
     useEffect(() => {
       console.log(props.store.cards2);
@@ -99,14 +105,23 @@ const App: React.FC<any> = inject("store")(
       }
     };
 
-    return acildiMi ? (
+    return newCardAcildiMi ? (
       <NewCard
         store={props.store}
-        id="32"
-        setAcildiMi={setAcildiMi}
+        id={defaultID.toString()}
+        setID={setDefaultID}
+        setAcildiMi={setNewCardAcildiMi}
         listeAdi={listeAdi}
         setCardAdi={setCardTitle}
       ></NewCard>
+    ) : editCardAcildiMi ? (
+      <EditCard
+        store={props.store}
+        setEditAcildimi={setEditCardAcildiMi}
+        title={editTitle}
+        commnet={editCommnet}
+        inlist={listeAdi}
+      ></EditCard>
     ) : (
       <div style={{ display: "flex" }}>
         <DragDropContext onDragEnd={onDragEnd}>
@@ -138,7 +153,17 @@ const App: React.FC<any> = inject("store")(
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
-                          <Card green> {item.content}</Card>
+                          <Card
+                            onClick={() => {
+                              setEditTitle(item.content);
+                              setEditComment(item.comment);
+                              setListeAdi("birinci liste");
+                              setEditCardAcildiMi(true);
+                            }}
+                            green
+                          >
+                            {item.content}
+                          </Card>
                         </div>
                       )}
                     </Draggable>
@@ -147,7 +172,7 @@ const App: React.FC<any> = inject("store")(
                 {provided.placeholder}
                 <ListFooter
                   onClick={() => {
-                    setAcildiMi(true);
+                    setNewCardAcildiMi(true);
                     setListeAdi("birinci liste");
                   }}
                 ></ListFooter>
@@ -178,7 +203,17 @@ const App: React.FC<any> = inject("store")(
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Card red> {item.content}</Card>
+                        <Card
+                          onClick={() => {
+                            setEditTitle(item.content);
+                            setEditComment(item.comment);
+                            setListeAdi("ikinci liste");
+                            setEditCardAcildiMi(true);
+                          }}
+                          green
+                        >
+                          {item.content}
+                        </Card>
                       </div>
                     )}
                   </Draggable>
@@ -186,12 +221,7 @@ const App: React.FC<any> = inject("store")(
                 {provided.placeholder}
                 <ListFooter
                   onClick={() => {
-                    let data = {
-                      id: defaultID,
-                      content: CardTitle,
-                    };
-
-                    setAcildiMi(true);
+                    setNewCardAcildiMi(true);
                     setListeAdi("ikinci liste");
                   }}
                 ></ListFooter>

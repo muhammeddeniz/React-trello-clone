@@ -82,6 +82,20 @@ class Store {
 
     this.cards2.push(data);
   };
+
+  @action
+  DeleteComment = (title: string, listAdi: any, text: string) => {
+    if (listAdi == "birinci liste") {
+      let findData = this.cards1.find((item) => item.content == title);
+
+      let index: any = findData?.comment.indexOf(text);
+      console.log(index);
+
+      if (index > -1) {
+        this.cards1[index].comment.splice(index, 1);
+      }
+    }
+  };
 }
 
 export default Store;

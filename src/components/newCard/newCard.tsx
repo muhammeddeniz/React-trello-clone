@@ -12,11 +12,13 @@ type IProps = JSX.IntrinsicElements["div"] & {
   setAcildiMi?: any;
   listeAdi?: string;
   setCardAdi?: any;
+  setID?: any;
 };
 
 const NewCard: React.FC<IProps> = ({
   store,
   id,
+  setID,
   setCardAdi,
   listeAdi,
   setAcildiMi,
@@ -79,6 +81,7 @@ const NewCard: React.FC<IProps> = ({
                     store.addData2(id, title, comment);
                   }
 
+                  setID(Number(id) + 1);
                   setAcildiMi(false);
                 }}
               >

@@ -16,6 +16,7 @@ const Card: React.FC<Props> = ({
   green,
   className,
   children,
+  ...props
 }) => {
   const StyleCardColor = cx(
     "card-color",
@@ -29,7 +30,7 @@ const Card: React.FC<Props> = ({
   );
 
   return (
-    <div className="card">
+    <div className="card" {...props}>
       <div className={StyleCardColor}></div>
       <p className="card-text">{children}</p>
     </div>
