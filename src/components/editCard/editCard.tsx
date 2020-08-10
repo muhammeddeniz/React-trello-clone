@@ -24,6 +24,7 @@ const editCard: React.FC<IProps> = ({
   ...props
 }) => {
   const [data, setData] = useState();
+  const [newComment, SetNewComment] = useState("");
 
   useEffect(() => {
     if (inlist == "birinci liste") {
@@ -72,8 +73,20 @@ const editCard: React.FC<IProps> = ({
               <Profile />
             </div>
             <div className="editCard-body-inputSide-input">
-              <Textarea />
-              <Button success>SAVE</Button>
+              <input
+                className="editCard-body-inputSide-input-i"
+                value={newComment}
+                onChange={(e: any) => SetNewComment(e.target.value)}
+              ></input>
+
+              <Button
+                success
+                onClick={() => {
+                  store.AddNewComment(title, newComment, inlist);
+                }}
+              >
+                SAVE
+              </Button>
             </div>
           </div>
 

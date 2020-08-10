@@ -2,6 +2,9 @@ import { observable, action, toJS } from "mobx";
 
 class Store {
   @observable
+  name = "Muhammed";
+
+  @observable
   cards1 = [
     {
       id: "1",
@@ -85,6 +88,8 @@ class Store {
 
   @action
   DeleteComment = (title: string, listAdi: any, text: string) => {
+    let temp = false;
+
     if (listAdi == "birinci liste") {
       let findData: any = this.cards1.find((item) => item.content == title);
 
@@ -93,8 +98,33 @@ class Store {
 
       if (index > -1) {
         this.cards1[indexMaster].comment.splice(index, 1);
+        temp = true;
       }
     } else if (listAdi == "ikinci liste") {
+      let findData: any = this.cards2.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards2.indexOf(findData);
+      let index: any = findData?.comment.indexOf(text);
+
+      if (index > -1) {
+        this.cards2[indexMaster].comment.splice(index, 1);
+        temp = true;
+      }
+    }
+
+    if (temp != true) {
+      let findData: any = this.cards1.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards1.indexOf(findData);
+      let index: any = findData?.comment.indexOf(text);
+
+      if (index > -1) {
+        this.cards1[indexMaster].comment.splice(index, 1);
+        temp = true;
+      }
+    }
+
+    if (temp != true) {
       let findData: any = this.cards2.find((item) => item.content == title);
 
       let indexMaster: any = this.cards2.indexOf(findData);
@@ -107,10 +137,18 @@ class Store {
   };
 
   @action
-  GetComment = (title: string) => {
-    let findData = this.cards1.find((item) => item.content == title);
+  AddNewComment = (title: string, comment: string, listName: string) => {
+    if (listName == "birinci liste") {
+      let findData: any = this.cards1.find((item) => item.content == title);
+      let indexMaster: any = this.cards1.indexOf(findData);
 
-    return findData?.comment;
+      this.cards1[indexMaster].comment.push(comment);
+    } else if (listName == "ikinci liste") {
+      let findData: any = this.cards2.find((item) => item.content == title);
+      let indexMaster: any = this.cards2.indexOf(findData);
+
+      this.cards2[indexMaster].comment.push(comment);
+    }
   };
 }
 

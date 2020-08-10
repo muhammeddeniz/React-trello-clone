@@ -82,9 +82,21 @@
         &-input {
           margin-left: 10px;
           background: #fff;
-          padding: 10px 10px;
-
+          padding-left: 10px;
+          padding-bottom: 10px;
+          padding-right: 10px;
           border-radius: 10px;
+
+          &-i {
+            border: 0px solid;
+            width: 500px;
+            padding-top: 16px;
+            padding-bottom: 10px;
+            outline: none;
+
+            cursor: pointer;
+            margin-bottom: 10px;
+          }
         }
       }
 
