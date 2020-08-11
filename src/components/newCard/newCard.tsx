@@ -13,6 +13,7 @@ type IProps = JSX.IntrinsicElements["div"] & {
   listeAdi?: string;
   setCardAdi?: any;
   setID?: any;
+  setData?: any;
 };
 
 const NewCard: React.FC<IProps> = ({
@@ -20,6 +21,7 @@ const NewCard: React.FC<IProps> = ({
   id,
   setID,
   setCardAdi,
+  setData,
   listeAdi,
   setAcildiMi,
   ...props
@@ -75,6 +77,12 @@ const NewCard: React.FC<IProps> = ({
               <Button
                 success
                 onClick={() => {
+                  // setData({
+                  //   id: id,
+                  //   title: title,
+                  //   comment: comment,
+                  // });
+
                   if (listeAdi == "birinci liste") {
                     store.addData1(id, title, comment);
                   } else if (listeAdi == "ikinci liste") {

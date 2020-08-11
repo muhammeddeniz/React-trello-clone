@@ -138,22 +138,39 @@ class Store {
 
   @action
   AddNewComment = (title: string, comment: string, listName: string) => {
+    let temp = false;
+
     if (listName == "birinci liste") {
       let findData: any = this.cards1.find((item) => item.content == title);
       let indexMaster: any = this.cards1.indexOf(findData);
 
-      this.cards1[indexMaster].comment.push(comment);
+      if (indexMaster > -1) {
+        console.log("deneme");
+
+        this.cards1[indexMaster].comment.push(comment);
+        temp = true;
+      }
     } else if (listName == "ikinci liste") {
       let findData: any = this.cards2.find((item) => item.content == title);
       let indexMaster: any = this.cards2.indexOf(findData);
 
-      this.cards2[indexMaster].comment.push(comment);
+      if (indexMaster > -1) {
+        console.log("ikinci");
+
+        this.cards2[indexMaster].comment.push(comment);
+        temp = true;
+      }
     }
   };
 
   @action
   ChangeName = (e: string) => {
     this.name = e;
+  };
+
+  @action
+  SetCards1 = (item: any) => {
+    this.cards1 = item;
   };
 }
 

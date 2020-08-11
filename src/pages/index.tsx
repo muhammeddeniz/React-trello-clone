@@ -55,10 +55,35 @@ const App: React.FC<any> = inject("store")(
 
     const [editTitle, setEditTitle] = useState("");
     const [editCommnet, setEditComment] = useState([]);
+    const [data, setData] = useState({
+      id: "",
+      title: "",
+      comment: "",
+    });
 
     useEffect(() => {
-      console.log(props.store.cards2);
-    }, []);
+      setItems(props.store.cards1);
+      setSelected(props.store.cards2);
+
+      // let { id, title, comment } = data;
+
+      // let newData = {
+      //   id: id,
+      //   content: title,
+      //   comment: comment,
+      // };
+      // if (listeAdi === "birinci liste" && data) {
+      //   setItems((denem: any) => [...denem, newData]);
+      // } else if (listeAdi == "ikinci liste" && data) {
+      //   setSelected((prevState: any) => [...prevState, newData]);
+      //   props.store.cards2 = items;
+      // }
+    }, [newCardAcildiMi]);
+
+    useEffect(() => {
+      props.store.cards1 = items;
+      props.store.cards2 = selected;
+    });
 
     const id2List = {
       droppable: "items",
@@ -107,6 +132,7 @@ const App: React.FC<any> = inject("store")(
 
     return newCardAcildiMi ? (
       <NewCard
+        setData={setData}
         store={props.store}
         id={defaultID.toString()}
         setID={setDefaultID}
