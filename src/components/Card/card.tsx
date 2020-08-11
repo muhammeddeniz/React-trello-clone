@@ -1,37 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cx from "classnames";
 import "./card.scss";
 
 type Props = JSX.IntrinsicElements["div"] & {
-  red?: boolean;
-  blue?: boolean;
-  yellow?: boolean;
-  green?: boolean;
+  labels?: Array<string>;
 };
 
 const Card: React.FC<Props> = ({
-  red,
-  blue,
-  yellow,
-  green,
+  labels = [],
   className,
   children,
   ...props
 }) => {
-  const StyleCardColor = cx(
-    "card-color",
-    {
-      "card-color-red": red,
-      "card-color-blue": blue,
-      "card-color-yellow": yellow,
-      "card-color-green": green,
-    },
-    className
-  );
+  let red = labels?.find((item: any) => item == "r");
+  let blue = labels?.find((item: any) => item == "b");
+  let yellow = labels?.find((item: any) => item == "y");
+  let green = labels?.find((item: any) => item == "g");
 
   return (
     <div className="card" {...props}>
-      <div className={StyleCardColor}></div>
+      <div className="card-color">
+        {red && <div className="card-color-red"></div>}
+        {blue && <div className="card-color-blue"></div>}
+        {yellow && <div className="card-color-yellow"></div>}
+        {green && <div className="card-color-green"></div>}
+      </div>
       <p className="card-text">{children}</p>
     </div>
   );

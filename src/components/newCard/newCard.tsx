@@ -77,12 +77,6 @@ const NewCard: React.FC<IProps> = ({
               <Button
                 success
                 onClick={() => {
-                  // setData({
-                  //   id: id,
-                  //   title: title,
-                  //   comment: comment,
-                  // });
-
                   if (listeAdi == "birinci liste") {
                     store.addData1(id, title, comment);
                   } else if (listeAdi == "ikinci liste") {

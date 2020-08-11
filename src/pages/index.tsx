@@ -64,26 +64,12 @@ const App: React.FC<any> = inject("store")(
     useEffect(() => {
       setItems(props.store.cards1);
       setSelected(props.store.cards2);
-
-      // let { id, title, comment } = data;
-
-      // let newData = {
-      //   id: id,
-      //   content: title,
-      //   comment: comment,
-      // };
-      // if (listeAdi === "birinci liste" && data) {
-      //   setItems((denem: any) => [...denem, newData]);
-      // } else if (listeAdi == "ikinci liste" && data) {
-      //   setSelected((prevState: any) => [...prevState, newData]);
-      //   props.store.cards2 = items;
-      // }
     }, [newCardAcildiMi]);
 
     useEffect(() => {
       props.store.cards1 = items;
       props.store.cards2 = selected;
-    });
+    }, [items, selected]);
 
     const id2List = {
       droppable: "items",
@@ -188,7 +174,7 @@ const App: React.FC<any> = inject("store")(
                                 setListeAdi("birinci liste");
                                 setEditCardAcildiMi(true);
                               }}
-                              green
+                              labels={item.labels ? item.labels : []}
                             >
                               {item.content}
                             </Card>
@@ -245,7 +231,7 @@ const App: React.FC<any> = inject("store")(
                               setListeAdi("ikinci liste");
                               setEditCardAcildiMi(true);
                             }}
-                            green
+                            labels={item.labels ? item.labels : []}
                           >
                             {item.content}
                           </Card>

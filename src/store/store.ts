@@ -10,6 +10,7 @@ class Store {
       id: "1",
       content: "Kart 1.1",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "g", "s", "w"],
     },
     {
       id: "2",
