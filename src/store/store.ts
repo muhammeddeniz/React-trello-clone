@@ -10,17 +10,19 @@ class Store {
       id: "1",
       content: "Kart 1.1",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["y", "g", "s", "w"],
+      labels: ["y", "g", "r", "b"],
     },
     {
       id: "2",
       content: "Kart 1.2",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "b"],
     },
     {
       id: "3",
       content: "Kart 1.3",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["r"],
     },
     {
       id: "4",

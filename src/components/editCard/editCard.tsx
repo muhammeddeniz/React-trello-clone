@@ -3,7 +3,7 @@ import "./editCard.scss";
 import { observer } from "mobx-react";
 
 import { Card2, Close, List } from "../icons";
-import { Button, IconButton, Textarea } from "../index";
+import { Button, IconButton, Textarea, Labels } from "../index";
 import { Profile } from "../profile";
 import { strict } from "assert";
 
@@ -48,7 +48,8 @@ const editCard: React.FC<IProps> = ({
               <p className="editCard-header-leftSide-text-label">LABEL</p>
 
               <div className="editCard-header-leftSide-text-buttons">
-                <Button warning>DİKKAT</Button>
+                <Labels data={data} title={title}></Labels>
+
                 <IconButton onClick={() => alert("denem")} />
               </div>
             </div>
