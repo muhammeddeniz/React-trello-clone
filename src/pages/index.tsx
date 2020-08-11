@@ -73,7 +73,7 @@ const App: React.FC<any> = inject("store")(
     }, [items, selected]);
 
     const id2List = {
-      droppable: "items",
+      droppable1: "items",
       droppable2: "selected",
     };
 
@@ -104,6 +104,9 @@ const App: React.FC<any> = inject("store")(
         if (source.droppableId === "droppable2") {
           setSelected(items);
         }
+        if (source.droppableId === "droppable1") {
+          setItems(items);
+        }
       } else {
         const result = move(
           getList(source.droppableId),
@@ -112,7 +115,7 @@ const App: React.FC<any> = inject("store")(
           destination
         );
 
-        setItems(result.droppable);
+        setItems(result.droppable1);
         setSelected(result.droppable2);
       }
     };
@@ -141,7 +144,7 @@ const App: React.FC<any> = inject("store")(
           <div>
             <Dropable
               listeAdi="birinci liste"
-              droppID="droppable"
+              droppID="droppable1"
               items={items}
               setEditCardAcildiMi={setEditCardAcildiMi}
               setEditTitle={setEditTitle}
