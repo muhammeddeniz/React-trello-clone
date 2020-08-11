@@ -2,7 +2,7 @@ import { observable, action, toJS } from "mobx";
 
 class Store {
   @observable
-  name = "Deniz";
+  name = "Muhammed";
 
   @observable
   cards1 = [
@@ -32,30 +32,30 @@ class Store {
   ];
 
   @observable
-  cards2: {
-    id: string;
-    content: string;
-    comment: Array<string>;
-  }[] = [
+  cards2 = [
     {
       id: "5",
       content: "Kart 2.1",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "b"],
     },
     {
       id: "6",
       content: "Kart 2.2",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "b"],
     },
     {
       id: "7",
       content: "Kart 2.3",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "b"],
     },
     {
       id: "8",
       content: "Kart 2.4",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: ["y", "b"],
     },
   ];
 
@@ -75,15 +75,22 @@ class Store {
   };
 
   @action
-  addData2 = (id: string, title: string, comment: Array<string>) => {
+  addData2 = (
+    id: string,
+    title: string,
+    comment: Array<string>,
+    labels: any
+  ) => {
     let data: {
       id: string;
       content: string;
       comment: Array<string>;
+      labels: any;
     } = {
       id: id,
       content: title,
       comment: comment,
+      labels: labels,
     };
 
     this.cards2.push(data);
@@ -141,8 +148,6 @@ class Store {
 
   @action
   AddNewComment = (title: string, comment: string, listName: string) => {
-    let temp = false;
-
     if (listName == "birinci liste") {
       let findData: any = this.cards1.find((item) => item.content == title);
       let indexMaster: any = this.cards1.indexOf(findData);
@@ -151,7 +156,6 @@ class Store {
         console.log("deneme");
 
         this.cards1[indexMaster].comment.push(comment);
-        temp = true;
       }
     } else if (listName == "ikinci liste") {
       let findData: any = this.cards2.find((item) => item.content == title);
@@ -161,7 +165,6 @@ class Store {
         console.log("ikinci");
 
         this.cards2[indexMaster].comment.push(comment);
-        temp = true;
       }
     }
   };
@@ -169,11 +172,6 @@ class Store {
   @action
   ChangeName = (e: string) => {
     this.name = e;
-  };
-
-  @action
-  SetCards1 = (item: any) => {
-    this.cards1 = item;
   };
 }
 

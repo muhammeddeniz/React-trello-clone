@@ -13,3 +13,4 @@ export { Header } from "./header/index";
 export { NewCard } from "./newCard/index";
 export { ProfileCard } from "./profileCard/index";
 export { Labels } from "./labels/index";
+export { Dropable } from "./dropable/index";

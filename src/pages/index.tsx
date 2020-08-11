@@ -8,6 +8,7 @@ import {
   ListFooter,
   EditCard,
   NewCard,
+  Dropable,
 } from "../components";
 import { observer, inject } from "mobx-react";
 
@@ -101,7 +102,7 @@ const App: React.FC<any> = inject("store")(
         let state: any = { items };
 
         if (source.droppableId === "droppable2") {
-          setSelected(state);
+          setSelected(items);
         }
       } else {
         const result = move(
@@ -138,117 +139,28 @@ const App: React.FC<any> = inject("store")(
       <div className="home-elements" style={{ display: "flex" }}>
         <DragDropContext onDragEnd={onDragEnd}>
           <div>
-            <Droppable droppableId="droppable">
-              {(provided, snapshot) => (
-                <div
-                  className="home-elements-element"
-                  ref={provided.innerRef}
-                  style={{
-                    width: 300,
-                    paddingLeft: 10,
-                    paddingRight: 10,
-                    paddingTop: 5,
-                    paddingBottom: 5,
-                    borderRadius: 12,
-                    background: "#dee1ec",
-                  }}
-                >
-                  <ListHead>Birinci Liste</ListHead>
-                  {items.map((item: any, index: any) => (
-                    <div>
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <Card
-                              onClick={() => {
-                                setEditTitle(item.content);
-                                setEditComment(item.comment);
-                                setListeAdi("birinci liste");
-                                setEditCardAcildiMi(true);
-                              }}
-                              labels={item.labels ? item.labels : []}
-                            >
-                              {item.content}
-                            </Card>
-                          </div>
-                        )}
-                      </Draggable>
-                    </div>
-                  ))}
-                  {provided.placeholder}
-                  <ListFooter
-                    onClick={() => {
-                      setNewCardAcildiMi(true);
-                      setListeAdi("birinci liste");
-                    }}
-                  ></ListFooter>
-                </div>
-              )}
-            </Droppable>
+            <Dropable
+              listeAdi="birinci liste"
+              droppID="droppable"
+              items={items}
+              setEditCardAcildiMi={setEditCardAcildiMi}
+              setEditTitle={setEditTitle}
+              setEditComment={setEditComment}
+              setListeAdi={setListeAdi}
+              setNewCardAcildiMi={setNewCardAcildiMi}
+            ></Dropable>
           </div>
           <div>
-            <Droppable droppableId="droppable2">
-              {(provided, snapshot) => (
-                <div
-                  className="home-elements-element"
-                  ref={provided.innerRef}
-                  style={{
-                    userSelect: "none",
-                    width: 300,
-                    paddingLeft: 10,
-                    paddingRight: 10,
-                    paddingTop: 5,
-                    paddingBottom: 5,
-                    borderRadius: 12,
-                    background: "#dee1ec",
-                  }}
-                >
-                  <ListHead>İkinci Liste</ListHead>
-                  {selected.map((item: any, index: any) => (
-                    <Draggable
-                      key={item.id}
-                      draggableId={item.id}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <Card
-                            onClick={() => {
-                              setEditTitle(item.content);
-                              setEditComment(item.comment);
-                              setListeAdi("ikinci liste");
-                              setEditCardAcildiMi(true);
-                            }}
-                            labels={item.labels ? item.labels : []}
-                          >
-                            {item.content}
-                          </Card>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                  <ListFooter
-                    onClick={() => {
-                      setNewCardAcildiMi(true);
-                      setListeAdi("ikinci liste");
-                    }}
-                  ></ListFooter>
-                </div>
-              )}
-            </Droppable>
+            <Dropable
+              listeAdi="ikinci liste"
+              droppID="droppable2"
+              items={selected}
+              setEditCardAcildiMi={setEditCardAcildiMi}
+              setEditTitle={setEditTitle}
+              setEditComment={setEditComment}
+              setListeAdi={setListeAdi}
+              setNewCardAcildiMi={setNewCardAcildiMi}
+            ></Dropable>
           </div>
         </DragDropContext>
       </div>
