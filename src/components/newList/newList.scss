@@ -1,5 +1,5 @@
 .newList {
-  background: #3d5af1;
+  background: #002651;
 
   display: flex;
   align-items: center;
@@ -7,6 +7,8 @@
   padding: 10px 20px;
   border-radius: 6px;
   width: 260px;
+  height: 40px;
+  margin-top: 20px;
 
   cursor: pointer;
 
@@ -14,7 +16,9 @@
     margin: 0;
     margin-left: 15px;
 
+    font-size: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
+    font-weight: bold;
+    color: #fff;
   }
 }

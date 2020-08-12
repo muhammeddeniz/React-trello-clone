@@ -9,6 +9,7 @@ import {
   EditCard,
   NewCard,
   Dropable,
+  NewList,
 } from "../components";
 import { observer, inject } from "mobx-react";
 
@@ -165,6 +166,8 @@ const App: React.FC<any> = inject("store")(
               setNewCardAcildiMi={setNewCardAcildiMi}
             ></Dropable>
           </div>
+
+          <NewList></NewList>
         </DragDropContext>
       </div>
     );

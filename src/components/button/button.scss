@@ -1,6 +1,7 @@
 @import "../../styles/index.scss";
 
 .btn {
+  user-select: none;
   border: 0;
   padding: 2px 17px;
   border-radius: 6px;

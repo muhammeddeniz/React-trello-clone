@@ -1,10 +1,18 @@
 import React from "react";
 import "./addLabel.scss";
 
-const AddLabel: React.FC<any> = () => {
+import { Button } from "../index";
+
+const AddLabel: React.FC<any> = ({ setElement, ...props }) => {
   return (
-    <div>
-      <p>Add Label</p>
+    <div className="addLabel" {...props}>
+      <div className="addLabel-centik"></div>
+      <div className="addLabel-content">
+        <Button warning>warning</Button>
+        <Button info>info</Button>
+        <Button success>success</Button>
+        <Button danger>danger</Button>
+      </div>
     </div>
   );
 };

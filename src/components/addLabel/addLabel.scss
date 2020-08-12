@@ -1,0 +1,31 @@
+.addLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: 10px 15px;
+  background: #000;
+
+  position: relative;
+
+  &-centik {
+    right: 10px;
+    top: -9px;
+    width: 20px;
+    height: 20px;
+
+    background: #000;
+    position: absolute;
+
+    transform: rotate(45deg);
+  }
+
+  &-content {
+    z-index: 1;
+
+    * {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -65,10 +65,12 @@ class Store {
       id: string;
       content: string;
       comment: Array<string>;
+      labels: Array<string>;
     } = {
       id: id,
       content: title,
       comment: comment,
+      labels: [""],
     };
 
     this.cards1.push(data);
@@ -85,7 +87,7 @@ class Store {
       id: string;
       content: string;
       comment: Array<string>;
-      labels: any;
+      labels: Array<string>;
     } = {
       id: id,
       content: title,
@@ -153,8 +155,6 @@ class Store {
       let indexMaster: any = this.cards1.indexOf(findData);
 
       if (indexMaster > -1) {
-        console.log("deneme");
-
         this.cards1[indexMaster].comment.push(comment);
       }
     } else if (listName == "ikinci liste") {
@@ -162,9 +162,26 @@ class Store {
       let indexMaster: any = this.cards2.indexOf(findData);
 
       if (indexMaster > -1) {
-        console.log("ikinci");
-
         this.cards2[indexMaster].comment.push(comment);
+      }
+    }
+  };
+
+  @action
+  AddNewLabel = (title: string, label: string, listName: string) => {
+    if (listName == "birinci liste") {
+      let findData: any = this.cards1.find((item) => item.content == title);
+      let indexMaster: any = this.cards1.indexOf(findData);
+
+      if (indexMaster > -1) {
+        this.cards1[indexMaster].labels?.push(label);
+      }
+    } else if (listName == "ikinci liste") {
+      let findData: any = this.cards2.find((item) => item.content == title);
+      let indexMaster: any = this.cards2.indexOf(findData);
+
+      if (indexMaster > -1) {
+        this.cards2[indexMaster].labels?.push(label);
       }
     }
   };

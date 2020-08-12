@@ -3,7 +3,7 @@ import "./editCard.scss";
 import { observer } from "mobx-react";
 
 import { Card2, Close, List } from "../icons";
-import { Button, IconButton, Textarea, Labels } from "../index";
+import { Button, IconButton, Textarea, Labels, AddLabel } from "../index";
 import { Profile } from "../profile";
 import { strict } from "assert";
 
@@ -25,6 +25,7 @@ const editCard: React.FC<IProps> = ({
 }) => {
   const [data, setData] = useState();
   const [newComment, SetNewComment] = useState("");
+  const [addLabelOpen, setAddlabelOpen] = useState(false);
 
   useEffect(() => {
     if (inlist == "birinci liste") {
@@ -50,7 +51,14 @@ const editCard: React.FC<IProps> = ({
               <div className="editCard-header-leftSide-text-buttons">
                 <Labels data={data} title={title}></Labels>
 
-                <IconButton onClick={() => alert("denem")} />
+                <IconButton
+                  onClick={() => {
+                    setAddlabelOpen(!addLabelOpen);
+                  }}
+                />
+                <div className="editCard-header-leftSide-text-buttons-label">
+                  {addLabelOpen ? <AddLabel></AddLabel> : null}
+                </div>
               </div>
             </div>
           </div>
