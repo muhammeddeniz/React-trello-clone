@@ -4,7 +4,7 @@
 
   cursor: pointer;
 
-  background-color: #111;
+  background-color: #364f6b;
   border-radius: 50%;
 
   display: flex;
@@ -13,12 +13,13 @@
   position: relative;
 
   &-name {
-    background: #071a52;
+    font-size: 19px;
+    background: #364f6b;
 
     border: 0px solid;
 
-    width: fit-content;
-    color: #fff;
+    width: 150px;
+    color: #ccc;
     position: absolute;
     right: 40px;
   }

@@ -74,7 +74,7 @@ const Dropable: React.FC<IProps> = ({
           <ListFooter
             onClick={() => {
               setNewCardAcildiMi(true);
-              setListeAdi("birinci liste");
+              setListeAdi(listeAdi);
             }}
           ></ListFooter>
         </div>

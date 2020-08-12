@@ -27,7 +27,7 @@ const Profile: React.FC<IProps> = ({
       {admin && (
         <input
           className="profile-name"
-          placeholder={store.name}
+          defaultValue={store.name}
           onChange={(e) => store.ChangeName(e.target.value)}
         ></input>
       )}
