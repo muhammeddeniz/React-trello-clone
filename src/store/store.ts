@@ -187,8 +187,63 @@ class Store {
       let findData: any = this.cards2.find((item) => item.content == title);
       let indexMaster: any = this.cards2.indexOf(findData);
 
+      let findLabel = findData.labels.find((i: any) => i === label);
+
+      if (findLabel) {
+        return;
+      }
       if (indexMaster > -1) {
         this.cards2[indexMaster].labels?.push(label);
+      }
+    }
+  };
+
+  @action
+  DeleteLabel = (title: string, listAdi: any, text: string) => {
+    let temp = false;
+
+    if (listAdi == "birinci liste") {
+      let findData: any = this.cards1.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards1.indexOf(findData);
+      let index: any = findData?.labels.indexOf(text);
+
+      if (index > -1) {
+        this.cards1[indexMaster].labels.splice(index, 1);
+        temp = true;
+      }
+    } else if (listAdi == "ikinci liste") {
+      let findData: any = this.cards2.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards2.indexOf(findData);
+      let index: any = findData?.labels.indexOf(text);
+
+      if (index > -1) {
+        this.cards2[indexMaster].labels.splice(index, 1);
+        temp = true;
+      }
+    }
+
+    if (temp != true) {
+      let findData: any = this.cards1.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards1.indexOf(findData);
+      let index: any = findData?.labels.indexOf(text);
+
+      if (index > -1) {
+        this.cards1[indexMaster].labels.splice(index, 1);
+        temp = true;
+      }
+    }
+
+    if (temp != true) {
+      let findData: any = this.cards2.find((item) => item.content == title);
+
+      let indexMaster: any = this.cards2.indexOf(findData);
+      let index: any = findData?.labels.indexOf(text);
+
+      if (index > -1) {
+        this.cards2[indexMaster].labels.splice(index, 1);
       }
     }
   };

@@ -77,7 +77,12 @@ const editCard: React.FC<IProps> = ({
               <p className="editCard-header-leftSide-text-label">LABEL</p>
 
               <div className="editCard-header-leftSide-text-buttons">
-                <Labels data={data} title={title}></Labels>
+                <Labels
+                  inList={inlist}
+                  store={store}
+                  data={data}
+                  title={title}
+                ></Labels>
 
                 <IconButton
                   onClick={() => {

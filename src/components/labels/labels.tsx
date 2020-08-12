@@ -6,15 +6,19 @@ import { Button } from "../index";
 interface IProps {
   data?: any;
   title?: string;
+  store?: any;
+  inList?: string;
 }
 
-const Labels: React.FC<IProps> = ({ data, title }) => {
+const Labels: React.FC<IProps> = ({ store, data, title, inList }) => {
   const [myData, setMyData] = useState({
     id: "",
     content: "",
     comment: [""],
     labels: ["r"],
   });
+
+  const [labelData, setLabelData] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -27,13 +31,45 @@ const Labels: React.FC<IProps> = ({ data, title }) => {
     <div className="labels">
       {myData?.labels?.map((item: any, key: any) => {
         return item === "r" ? (
-          <Button danger>Danger</Button>
+          <Button
+            onClick={() => {
+              store.DeleteLabel(title, inList, "r");
+              setLabelData(!labelData);
+            }}
+            danger
+          >
+            Danger
+          </Button>
         ) : item === "b" ? (
-          <Button info>Info</Button>
+          <Button
+            onClick={() => {
+              store.DeleteLabel(title, inList, "b");
+              setLabelData(!labelData);
+            }}
+            info
+          >
+            Info
+          </Button>
         ) : item === "y" ? (
-          <Button warning>WArning</Button>
+          <Button
+            onClick={() => {
+              store.DeleteLabel(title, inList, "y");
+              setLabelData(!labelData);
+            }}
+            warning
+          >
+            WArning
+          </Button>
         ) : item === "g" ? (
-          <Button success>Success</Button>
+          <Button
+            onClick={() => {
+              store.DeleteLabel(title, inList, "g");
+              setLabelData(!labelData);
+            }}
+            success
+          >
+            Success
+          </Button>
         ) : null;
       })}
     </div>
