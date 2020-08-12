@@ -3,15 +3,30 @@ import "./addLabel.scss";
 
 import { Button } from "../index";
 
-const AddLabel: React.FC<any> = ({ setElement, ...props }) => {
+const AddLabel: React.FC<any> = ({
+  setWarning,
+  setInfo,
+  setDanger,
+  setSuccess,
+  setElement,
+  ...props
+}) => {
   return (
     <div className="addLabel" {...props}>
       <div className="addLabel-centik"></div>
       <div className="addLabel-content">
-        <Button warning>warning</Button>
-        <Button info>info</Button>
-        <Button success>success</Button>
-        <Button danger>danger</Button>
+        <Button onClick={() => setWarning(true)} warning>
+          warning
+        </Button>
+        <Button onClick={() => setInfo(true)} info>
+          info
+        </Button>
+        <Button onClick={() => setSuccess(true)} success>
+          success
+        </Button>
+        <Button onClick={() => setDanger(true)} danger>
+          danger
+        </Button>
       </div>
     </div>
   );

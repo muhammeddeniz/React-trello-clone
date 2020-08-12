@@ -27,6 +27,34 @@ const editCard: React.FC<IProps> = ({
   const [newComment, SetNewComment] = useState("");
   const [addLabelOpen, setAddlabelOpen] = useState(false);
 
+  const [warning, setWarning] = useState(false);
+  const [info, setInfo] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [danger, setDanger] = useState(false);
+
+  useEffect(() => {
+    if (warning) {
+      store.AddNewLabel(title, "y", inlist);
+      setWarning(false);
+      setAddlabelOpen(false);
+    }
+    if (info) {
+      store.AddNewLabel(title, "b", inlist);
+      setInfo(false);
+      setAddlabelOpen(false);
+    }
+    if (success) {
+      store.AddNewLabel(title, "g", inlist);
+      setSuccess(false);
+      setAddlabelOpen(false);
+    }
+    if (danger) {
+      store.AddNewLabel(title, "r", inlist);
+      setDanger(false);
+      setAddlabelOpen(false);
+    }
+  });
+
   useEffect(() => {
     if (inlist == "birinci liste") {
       setData(store.cards1);
@@ -57,7 +85,16 @@ const editCard: React.FC<IProps> = ({
                   }}
                 />
                 <div className="editCard-header-leftSide-text-buttons-label">
-                  {addLabelOpen ? <AddLabel></AddLabel> : null}
+                  <div className="editCard-header-leftSide-text-buttons-label-1">
+                    {addLabelOpen ? (
+                      <AddLabel
+                        setSuccess={setSuccess}
+                        setInfo={setInfo}
+                        setDanger={setDanger}
+                        setWarning={setWarning}
+                      ></AddLabel>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>

@@ -64,13 +64,13 @@
             display: flex;
             align-items: center;
 
-            position: relative;
-
             &-label {
-              position: absolute;
-
-              top: 47px;
-              left: 103px;
+              position: relative;
+              &-1 {
+                position: absolute;
+                top: 30px;
+                right: -4px;
+              }
             }
           }
         }

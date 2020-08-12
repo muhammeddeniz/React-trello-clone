@@ -28,6 +28,7 @@ class Store {
       id: "4",
       content: "Kart 1.4",
       comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      labels: [""],
     },
   ];
 
@@ -171,6 +172,12 @@ class Store {
   AddNewLabel = (title: string, label: string, listName: string) => {
     if (listName == "birinci liste") {
       let findData: any = this.cards1.find((item) => item.content == title);
+      let findLabel = findData.labels.find((i: any) => i === label);
+
+      if (findLabel) {
+        return;
+      }
+
       let indexMaster: any = this.cards1.indexOf(findData);
 
       if (indexMaster > -1) {

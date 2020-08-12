@@ -23,17 +23,19 @@ const Labels: React.FC<IProps> = ({ data, title }) => {
     }
   });
 
-  let red = myData?.labels?.find((item: any) => item == "r");
-  let blue = myData?.labels?.find((item: any) => item == "b");
-  let yellow = myData?.labels?.find((item: any) => item == "y");
-  let green = myData?.labels?.find((item: any) => item == "g");
-
   return (
     <div className="labels">
-      {red ? <Button danger>Danger</Button> : null}
-      {blue ? <Button info>İnfo</Button> : null}
-      {yellow ? <Button warning>Warning</Button> : null}
-      {green ? <Button success>Success</Button> : null}
+      {myData?.labels?.map((item: any, key: any) => {
+        return item === "r" ? (
+          <Button danger>Danger</Button>
+        ) : item === "b" ? (
+          <Button info>Info</Button>
+        ) : item === "y" ? (
+          <Button warning>WArning</Button>
+        ) : item === "g" ? (
+          <Button success>Success</Button>
+        ) : null;
+      })}
     </div>
   );
 };
