@@ -82,7 +82,7 @@ class Store {
     id: string,
     title: string,
     comment: Array<string>,
-    labels: any
+    labels: any = [""]
   ) => {
     let data: {
       id: string;
