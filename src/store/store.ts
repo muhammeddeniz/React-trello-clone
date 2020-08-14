@@ -9,26 +9,13 @@ class Store {
     {
       id: "1",
       content: "Kart 1.1",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      comment: [
+        {
+          text: "iyi",
+          time: "12.02.2332",
+        },
+      ],
       labels: ["y", "g", "r", "b"],
-    },
-    {
-      id: "2",
-      content: "Kart 1.2",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["y", "b"],
-    },
-    {
-      id: "3",
-      content: "Kart 1.3",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["r"],
-    },
-    {
-      id: "4",
-      content: "Kart 1.4",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: [""],
     },
   ];
 
@@ -37,35 +24,22 @@ class Store {
     {
       id: "5",
       content: "Kart 2.1",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["y", "b"],
-    },
-    {
-      id: "6",
-      content: "Kart 2.2",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["y", "b"],
-    },
-    {
-      id: "7",
-      content: "Kart 2.3",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
-      labels: ["y", "b"],
-    },
-    {
-      id: "8",
-      content: "Kart 2.4",
-      comment: ["çok iyi ", "çok güzel", "olmuş bu "],
+      comment: [
+        {
+          text: "iyi",
+          time: "12.02.2332",
+        },
+      ],
       labels: ["y", "b"],
     },
   ];
 
   @action
-  addData1 = (id: string, title: string, comment: Array<string>) => {
+  addData1 = (id: string, title: string, comment: any) => {
     let data: {
       id: string;
       content: string;
-      comment: Array<string>;
+      comment: any;
       labels: Array<string>;
     } = {
       id: id,
@@ -78,16 +52,11 @@ class Store {
   };
 
   @action
-  addData2 = (
-    id: string,
-    title: string,
-    comment: Array<string>,
-    labels: any = [""]
-  ) => {
+  addData2 = (id: string, title: string, comment: any, labels: any = [""]) => {
     let data: {
       id: string;
       content: string;
-      comment: Array<string>;
+      comment: any;
       labels: Array<string>;
     } = {
       id: id,
@@ -150,7 +119,7 @@ class Store {
   };
 
   @action
-  AddNewComment = (title: string, comment: string, listName: string) => {
+  AddNewComment = (title: string, comment: any, listName: string) => {
     if (listName == "birinci liste") {
       let findData: any = this.cards1.find((item) => item.content == title);
       let indexMaster: any = this.cards1.indexOf(findData);

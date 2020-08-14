@@ -133,7 +133,11 @@ const editCard: React.FC<IProps> = ({
               <Button
                 success
                 onClick={() => {
-                  store.AddNewComment(title, newComment, inlist);
+                  let newCom = {
+                    text: newComment,
+                    time: `${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} `,
+                  };
+                  store.AddNewComment(title, newCom, inlist);
                 }}
               >
                 SAVE
@@ -151,13 +155,13 @@ const editCard: React.FC<IProps> = ({
                       {store.name}
                     </p>
                     <p className="editCard-body-comment-header-t-text">
-                      a minute ago
+                      {<p>{item.time}</p>}
                     </p>
                   </div>
                 </div>
                 <div className="editCard-body-comment-body">
                   <div className="editCard-body-comment-body-text">
-                    <p>{item}</p>
+                    <p>{item.text}</p>
                   </div>
                   <div className="editCard-body-comment-footer">
                     <p>Edit</p>
