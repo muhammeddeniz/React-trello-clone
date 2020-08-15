@@ -1,7 +1,8 @@
 <h1 style='text-align:center'>React Trello Clone</h1>
 
 <h4>Demo</h4>
-<a>https://react-trello-clone.vercel.app</a>
+
+[https://react-trello-clone.vercel.app](https://react-trello-clone.vercel.app)
 
 <br>
 <br>
@@ -15,14 +16,6 @@
 
 <br><br>
 
-<h4>Views</h4>
-<br>
-
-![Test Image 1](./screens/s1.png)
-![Test Image 1](./screens/w2.png)
-
-<br><br>
-
 <h4>Development</h4>
 
 ```
@@ -30,6 +23,15 @@ yarn install
 
 yarn dev
 ```
+
+<br><br>
+
+<h4>Views</h4>
+<br>
+
+![Test Image 1](./screens/s1.png)
+![Test Image 1](./screens/s2.png)
+![Test Image 1](./screens/s3.png)
 
 <br><br>
 
