@@ -164,7 +164,6 @@ const editCard: React.FC<IProps> = ({
                     <p>{item.text}</p>
                   </div>
                   <div className="editCard-body-comment-footer">
-                    <p>Edit</p>
                     <p
                       onClick={() => {
                         store.DeleteComment(title, inlist, item);

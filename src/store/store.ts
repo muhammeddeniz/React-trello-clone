@@ -17,6 +17,28 @@ class Store {
       ],
       labels: ["y", "g", "r", "b"],
     },
+    {
+      id: "2",
+      content: "Kart 1.2",
+      comment: [
+        {
+          text: "deneme",
+          time: "12.02.2332",
+        },
+      ],
+      labels: ["y", "b"],
+    },
+    {
+      id: "3",
+      content: "Kart 1.3",
+      comment: [
+        {
+          text: "demee",
+          time: "12.02.2332",
+        },
+      ],
+      labels: ["y"],
+    },
   ];
 
   @observable
@@ -31,6 +53,17 @@ class Store {
         },
       ],
       labels: ["y", "b"],
+    },
+    {
+      id: "6",
+      content: "Kart 2.2",
+      comment: [
+        {
+          text: "güzel",
+          time: "12.02.2332",
+        },
+      ],
+      labels: ["g", "r"],
     },
   ];
 
