@@ -11,6 +11,14 @@
   margin-right: 10px;
   cursor: pointer;
 
+  border-radius: 99px;
+
+  margin-top: 10px;
+
+  &:hover {
+    background: #c6c6cc;
+  }
+
   p {
     margin-left: 10px;
     color: #5c5757;

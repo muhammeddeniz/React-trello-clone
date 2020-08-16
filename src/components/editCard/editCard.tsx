@@ -127,7 +127,19 @@ const editCard: React.FC<IProps> = ({
               <input
                 className="editCard-body-inputSide-input-i"
                 value={newComment}
-                onChange={(e: any) => SetNewComment(e.target.value)}
+                onChange={(e: any) => {
+                  SetNewComment(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  let newCom = {
+                    text: newComment,
+                    time: `${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} `,
+                  };
+                  if (e.key === "Enter") {
+                    store.AddNewComment(title, newCom, inlist);
+                    SetNewComment("");
+                  }
+                }}
               ></input>
 
               <Button
@@ -138,6 +150,7 @@ const editCard: React.FC<IProps> = ({
                     time: `${new Date().toLocaleDateString()} - ${new Date().toLocaleTimeString()} `,
                   };
                   store.AddNewComment(title, newCom, inlist);
+                  SetNewComment("");
                 }}
               >
                 SAVE
